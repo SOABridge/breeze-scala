@@ -15,3 +15,14 @@ trait BreezeMessageCondition {
 
   def isMetBy(message: BreezeMessage): Boolean
 }
+
+/**
+ * Missing documentation.
+ *
+ * @author <a href="steffen.krause@soabridge.com">Steffen Krause</a>
+ * @since 1.0
+ */
+class DefaultCondition extends BreezeMessageCondition {
+
+  def isMetBy(message: BreezeMessage): Boolean = true
+}

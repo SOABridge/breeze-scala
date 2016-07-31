@@ -39,6 +39,9 @@ object BreezeMessageBus {
       val (actor, condition) = subscriber
       if(condition isMetBy event) actor ! event
     }
+
+    def subscribe(actor: ActorRef, to: Classifier): Boolean = super.subscribe((actor, new DefaultCondition), to)
+
   }
 
 }
