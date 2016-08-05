@@ -1,9 +1,9 @@
 /**
  * Copyright (C) 2016 SOABridge.org <http://www.soabridge.org>
  */
-package org.soabridge.scala.breeze.framework.eventbus
+package org.soabridge.scala.breeze.messaging
 
-import org.soabridge.scala.breeze.messaging.BreezeMessage
+import org.soabridge.scala.breeze.framework.eventbus.EventCondition
 
 /**
  * Missing documentation.
@@ -11,9 +11,7 @@ import org.soabridge.scala.breeze.messaging.BreezeMessage
  * @author <a href="steffen.krause@soabridge.com">Steffen Krause</a>
  * @since 1.0
  */
-trait BreezeMessageCondition {
-
-  def isMetBy(message: BreezeMessage): Boolean
+trait MessageCondition extends EventCondition[BreezeMessage] {
 }
 
 /**
@@ -22,7 +20,7 @@ trait BreezeMessageCondition {
  * @author <a href="steffen.krause@soabridge.com">Steffen Krause</a>
  * @since 1.0
  */
-class DefaultCondition extends BreezeMessageCondition {
+class DefaultMessageCondition extends MessageCondition {
 
-  def isMetBy(message: BreezeMessage): Boolean = true
+  def isMetBy(e: BreezeMessage): Boolean = true
 }

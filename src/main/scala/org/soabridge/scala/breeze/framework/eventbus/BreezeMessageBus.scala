@@ -4,9 +4,21 @@
 package org.soabridge.scala.breeze.framework.eventbus
 
 import akka.actor.ActorRef
-import akka.event.{EventBus, SubchannelClassification}
-import akka.util.Subclassification
-import org.soabridge.scala.breeze.messaging.BreezeMessage
+import org.soabridge.scala.breeze.messaging.{BreezeMessage, DefaultMessageCondition}
+
+/**
+ * Missing documentation.
+ *
+ * @author <a href="steffen.krause@soabridge.com">Steffen Krause</a>
+ * @since 1.0
+ */
+class BreezeMessageBus(val name: String) extends BreezeBus {
+
+  type Event = BreezeMessage
+
+  def subscribe(actor: ActorRef, to: Classifier): Boolean = super.subscribe((actor, new DefaultMessageCondition), to)
+
+}
 
 /**
  * Missing documentation.
@@ -16,32 +28,8 @@ import org.soabridge.scala.breeze.messaging.BreezeMessage
  */
 object BreezeMessageBus {
 
-  def apply(): BreezeMessageBusImpl = new BreezeMessageBusImpl("default")
+  def apply(): BreezeMessageBus = new BreezeMessageBus("default")
 
-  def apply(name: String): BreezeMessageBusImpl = new BreezeMessageBusImpl(name)
-
-  /**
-   *
-   */
-  class BreezeMessageBusImpl(val name: String) extends EventBus with SubchannelClassification {
-    type Event = BreezeMessage
-    type Classifier = Class[_ <: Event]
-    type Subscriber = (ActorRef, BreezeMessageCondition)
-
-    protected implicit def subclassification = new Subclassification[Class[_ <: BreezeMessage]] {
-      def isEqual(x: Class[_ <: BreezeMessage], y: Class[_ <: BreezeMessage]): Boolean = x == y
-      def isSubclass(x: Class[_ <: BreezeMessage], y: Class[_ <: BreezeMessage]): Boolean = y isAssignableFrom x
-    }
-
-    protected def classify(event: BreezeMessage): Class[_ <: BreezeMessage] = event.getClass
-
-    protected def publish(event: BreezeMessage, subscriber: (ActorRef, BreezeMessageCondition)): Unit = {
-      val (actor, condition) = subscriber
-      if(condition isMetBy event) actor ! event
-    }
-
-    def subscribe(actor: ActorRef, to: Classifier): Boolean = super.subscribe((actor, new DefaultCondition), to)
-
-  }
+  def apply(name: String): BreezeMessageBus = new BreezeMessageBus(name)
 
 }
