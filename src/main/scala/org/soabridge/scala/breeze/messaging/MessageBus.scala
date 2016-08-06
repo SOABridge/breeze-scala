@@ -1,10 +1,10 @@
 /**
  * Copyright (C) 2016 SOABridge.org <http://www.soabridge.org>
  */
-package org.soabridge.scala.breeze.framework.eventbus
+package org.soabridge.scala.breeze.messaging
 
 import akka.actor.ActorRef
-import org.soabridge.scala.breeze.messaging.{BreezeMessage, DefaultMessageCondition}
+import org.soabridge.scala.breeze.framework.eventbus.BreezeBus
 
 /**
  * Missing documentation.
@@ -12,7 +12,7 @@ import org.soabridge.scala.breeze.messaging.{BreezeMessage, DefaultMessageCondit
  * @author <a href="steffen.krause@soabridge.com">Steffen Krause</a>
  * @since 1.0
  */
-class BreezeMessageBus(val name: String) extends BreezeBus {
+class MessageBus(val name: String) extends BreezeBus {
 
   type Event = BreezeMessage
 
@@ -26,10 +26,10 @@ class BreezeMessageBus(val name: String) extends BreezeBus {
  * @author <a href="steffen.krause@soabridge.com">Steffen Krause</a>
  * @since 1.0
  */
-object BreezeMessageBus {
+object MessageBus {
 
-  def apply(): BreezeMessageBus = new BreezeMessageBus("default")
+  def apply(): MessageBus = new MessageBus("default")
 
-  def apply(name: String): BreezeMessageBus = new BreezeMessageBus(name)
+  def apply(name: String): MessageBus = new MessageBus(name)
 
 }
