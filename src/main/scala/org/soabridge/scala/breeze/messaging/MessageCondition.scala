@@ -3,7 +3,7 @@
  */
 package org.soabridge.scala.breeze.messaging
 
-import org.soabridge.scala.breeze.framework.eventbus.EventCondition
+import org.soabridge.scala.breeze.framework.eventing.EventCondition
 
 /**
  * Missing documentation.

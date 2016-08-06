@@ -1,7 +1,7 @@
 /**
  * Copyright (C) 2016 SOABridge.org <http://www.soabridge.org>
  */
-package org.soabridge.scala.breeze.framework.eventbus
+package org.soabridge.scala.breeze.framework.eventing
 
 import akka.actor.ActorRef
 import akka.event.{EventBus, SubchannelClassification}

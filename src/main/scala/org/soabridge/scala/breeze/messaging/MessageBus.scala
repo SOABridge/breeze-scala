@@ -4,7 +4,7 @@
 package org.soabridge.scala.breeze.messaging
 
 import akka.actor.ActorRef
-import org.soabridge.scala.breeze.framework.eventbus.AbstractEventBus
+import org.soabridge.scala.breeze.framework.eventing.AbstractEventBus
 
 /**
  * Missing documentation.
