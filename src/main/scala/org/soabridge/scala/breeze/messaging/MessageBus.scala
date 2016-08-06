@@ -4,7 +4,7 @@
 package org.soabridge.scala.breeze.messaging
 
 import akka.actor.ActorRef
-import org.soabridge.scala.breeze.framework.eventbus.BreezeBus
+import org.soabridge.scala.breeze.framework.eventbus.AbstractEventBus
 
 /**
  * Missing documentation.
@@ -12,7 +12,7 @@ import org.soabridge.scala.breeze.framework.eventbus.BreezeBus
  * @author <a href="steffen.krause@soabridge.com">Steffen Krause</a>
  * @since 1.0
  */
-class MessageBus(val name: String) extends BreezeBus {
+class MessageBus(val name: String) extends AbstractEventBus {
 
   type Event = BreezeMessage
 
