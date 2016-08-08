@@ -11,9 +11,9 @@ import org.soabridge.scala.breeze.resources.ResourceActor
  * @author <a href="steffen.krause@soabridge.com">Steffen Krause</a>
  * @since 1.0
  */
-private[breeze] class HiveActor extends Actor {
+private[breeze] class VortexActor extends Actor {
   /* Importing all messages declared in companion object for processing */
-  import HiveActor.Messages._
+  import VortexActor.Messages._
 
   /** Supervising actor for all resources in the hive */
   private var resActor: ActorRef = _
@@ -56,9 +56,9 @@ private[breeze] class HiveActor extends Actor {
  * @author <a href="steffen.krause@soabridge.com">Steffen Krause</a>
  * @since 1.0
  */
-private[breeze] object HiveActor {
+private[breeze] object VortexActor {
   /** Actor properties for HiveActor */
-  val props: Props = Props[HiveActor]
+  val props: Props = Props[VortexActor]
 
   /** Accepted messages for HiveActor */
   object Messages {
